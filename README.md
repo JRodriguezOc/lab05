@@ -109,7 +109,9 @@
 #
 
 ## EJERCICIO PROPUESTO RESUELTO
--   En este trabajo se creará un blog simple utilizando el framework Django, asi que lo primero a realizar será preparar nuestro entorno de trabajo.
+-   En este trabajo se creará un blog simple utilizando el framework Django, asi que lo primero a realizar será preparar nuestro entorno de trabajo. Cabe recalcar que todo este laboratorio ha sido guiado por los pasos e instrucciones de:
+    -   https://tutorial.djangogirls.org/es/django/
+    -   https://github.com/rescobedoq/pw2/tree/main/labs/lab05
 -   A estas alturas ya debe estar instalado Python junto con su administrador de paquetes pip, así que en el directorio donde se va a trabajar hay que preparar el entorno virtual seguidamente del paquete Django.
     ```sh
     C:\Users\Joaquín\unsa\pweb2\lab05>python -m venv env
@@ -262,11 +264,78 @@
             return self.title
     ```
 -   Lo importante radica en la clase Post, ya que al inicio uno se percata que son importaciones de archivos externos para el funcionamientos del código.
--   En nuestra clase nos damos cuenta que hemos definido nuestro objeto post como lo indicamos anteriormente, estos atributos lo manejamos como valores, por lo tanto se tiiene que definir su tipo, tenemos texto, fecha, hora, links, etc. Si necesitas más información para definir valores o saber con exactitud que te proporcion de más, se tiene estas paginas informativas: 
+-   En nuestra clase nos damos cuenta que hemos definido nuestro objeto post como lo indicamos anteriormente, estos atributos lo manejamos como valores, por lo tanto se tiiene que definir su tipo, tenemos texto, fecha, hora, links, etc. La información para definir valores o saber con exactitud que te proporcion de más, se puede encontrar en estas paginas informativas: 
     -   https://docs.djangoproject.com/en/2.2/ref/models/fields/#field-types
     -   https://developer.mozilla.org/es/docs/Learn/Server-side/Django/Models
--   
+-   El modelo que creamos tenemos que enviar como tablas a la base de datos, asi que usamos la linea de comando ```python manage.py makemigrations blog```.
+    ```sh
+    (env) PS C:\Users\Joaquín\unsa\pweb2\lab05\Proyecto>python manage.py makemigrations blog
+    Migrations for 'blog':
+    Apps/blog/migrations/0001_initial.py
+     
+    - Create model Post
+    ```
+    ```sh
+    Proyecto
+    ├── Apps
+    │   └── blog
+    │       ├── __init__.py
+    │       ├── admin.py
+    │       ├── apps.py
+    │       ├── migrations
+    │       │   ├── __init__.py
+    │       │   ├── __pycache__
+    │       │   └── 0001_initial.py
+    │       ├── models.py
+    │       ├── tests.py
+    │       └── views.py
+    ├── db.sqlite3
+    ├── manage.py
+    └── Proyecto
+        ├── __init__.py
+        ├── __pycache__
+        ├── asgi.py
+        ├── settings.py
+        ├── urls.py
+        └── wsgi.py
+    ```
+-   Lo que se hizo al ejecutarlo fue que se creó un archivo de migraciones en nuestro directorio de blog llamado 0001_initial.py, ahora con esto hay que prepararlo en la base de datos efectuando una nueva migración con este código ```python manage.py migrate blog```.
+    ```sh
+    (env) PS C:\Users\Joaquín\unsa\pweb2\lab05\Proyecto>python manage.py migrate blog
+    Operations to perform:
+      Apply all migrations: blog
+    Running migrations:
+      Applying blog.0001_initial... OK
+    ```
+-   Solo queda unos pocos pasos más, para que se use todas las acciones que conlleva CRUD en nuestro simple blog, se tiene que usar el administrador de Django, nos dirigimos primero a la dirección ```blog/admin.py```, y a continuación colocamos el siguiente pequeño código:
+    ```sh
+    from django.contrib import admin
+    from .models import Post
 
+    # Register your models here.
+    admin.site.register(Post)
+    ```
+-   En este código se está registrando el modelo que creamos, Post. Con esto finalmente nos queda crear un super usuario, siendo este la persona que va a tener control total para así realizar cambios. Por ende tenemos que digitar la siguiente línea de código ```python manage.py createsuperuser```.
+    ```sh
+    (env) PS C:\Users\Joaquín\unsa\pweb2\lab05\Proyecto>python manage.py createsuperuser
+    Username (leave blank to use 'joaquin'): joardoc
+    Email address: jrodriguez@unsa.edu.pe
+    Password: 
+    Password (again):
+    Superuser created successfully.
+    ```
+-   Con esto realizado podemos entrar al blog creado y empezar con las operaciones CRUD, para esto corremos el servidor mediante ```python manage.py runserver```.
+    ```sh
+    (env) PS C:\Users\Joaquín\unsa\pweb2\lab05\Proyecto> python manage.py runserver
+    Watching for file changes with StatReloader
+    Performing system checks...
+
+    System check identified no issues (0 silenced).
+    June 11, 2022 - 13:03:37
+    Django version 4.0.5, using settings 'Proyecto.settings'
+    Starting development server at http://127.0.0.1:8000/
+    Quit the server with CTRL-BREAK.
+    ```
 
 #
 
