@@ -336,6 +336,14 @@
     Starting development server at http://127.0.0.1:8000/
     Quit the server with CTRL-BREAK.
     ```
+-   Entramos al enlace http://127.0.0.1:8000/admin.
+
+    *    (a) ![(a)](img/Registro.PNG)
+
+    *    (b) ![(b)](img/Inicio.PNG)
+
+    *    (c) ![(c)](img/CRUD.PNG)
+
 
 #
 
