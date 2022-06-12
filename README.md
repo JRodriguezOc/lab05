@@ -344,6 +344,7 @@
 
     *    (c) ![(c)](img/CRUD.PNG)
 
+-   Para corroborar las operaciones del CRUD entrar al link: https://www.youtube.com/watch?v=LU30Sd5UAW8.
 
 #
 
