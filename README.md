@@ -350,9 +350,13 @@
 
 ## CUESTIONARIO
 -   ¿Cuál es un estándar de codificación para Python? Ejemplo: Para PHP en el proyecto Pear https://pear.php.net/manual/en/standards.php
+    -   Uno de los estándar más usados es PEP8: https://peps.python.org/pep-0008/
 -   ¿Qué diferencias existen entre EasyInstall, pip, y PyPM?
--   En un proyecto Django que se debe ignorar para usar git. Vea: https://github.com/django/django/blob/main/.gitignore. ¿Qué otros tipos de archivos se deberían agregar a este archivo?
+    -   PyPI es un repositorio central de software de aplicaciones de terceros en Python, la idea más sencilla de conectarse a todos esos módulos y usar sus constantes actualizaciones fue la de un administrador. En un principio los usuarios de Python usaban EasyInstall, pero actualmente se usa pip. Los dos descritos antes son administradores de paquetes, su diferencia es el tipo de paquete de distribución que emplean, en cuanto a EasyInstall usa los llamados Egg, mientras que pip usa Wheels.
+    -   En la actualidad pocas veces se usa EasyInstall ya que los paquetes Eggs involucraron una extraña ruta de piratería de python y realmente no se configuraron de una manera muy bien definida en el disco, en cambio los paquetes Wheels proporcionaron una forma mucho más estable y razonable de hacerlo, ya que se puede instalar simplemente descomprimiendo el archivo sin ejecutar ningún código siendo importante la seguridad. También se tiene en cuenta mas pip que EasyInstall ya que empezaron a usarse archivos de requisitos.
+    -   PyPM es otro gestor de archivos, no es gratuito.
 -   Utilice ```python manage.py shell``` para agregar objetos. ¿Qué archivos se modificaron al agregar más objetos?
+    -   La linea de código nos va a hacer usar el Shell de Python, siendo este un entorno donde podemos donde escribimos código sin necesidad de digitar en el programa principal. Los archivos que normalmente cambian son los referentes a modelos, ya que se usa el sheel más que todo para hacer consultas o probar los modelos antes de realizar las vistas.
 
 #
 
